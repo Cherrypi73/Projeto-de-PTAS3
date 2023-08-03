@@ -14,5 +14,8 @@ const createUser = async (req, res) => {
         console.log(`Ops, deu erro: ${erro}`);
     })
 }
-
-module.exports = { createUser };
+const GetUser = async (req, res) => {
+    const users = await User.findAll();
+     return res.json(users)
+}
+module.exports = { createUser, GetUser };
