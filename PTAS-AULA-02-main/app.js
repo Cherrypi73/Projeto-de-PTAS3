@@ -9,5 +9,5 @@ app.listen(port, () => { console.log(`Run server...${port}`) });
 app.get('/', (req,res) => res.send("API-USER"));
 
 app.post('/user', userController.createUser);
-
+app.get('/user', userController.GetUser);
 
