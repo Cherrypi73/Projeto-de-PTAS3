@@ -34,7 +34,6 @@ const PutUser = async(req,res) =>{
         idtransform:idtransform
     }
     )
-
  }
 
 const GetUser = async (req, res) => {
