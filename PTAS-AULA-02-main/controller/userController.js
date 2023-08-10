@@ -1,5 +1,6 @@
 const User = require('../model/user');
-
+const secret = require('../config/auth.json');
+const jwt = require('jsonweb')
 const createUser = async (req, res) => {
     const { name, password, email } = req.body;
     await User.create({
@@ -49,7 +50,14 @@ const authenticateUser = async (req,res) =>{
                 password:password
             }
         })
-        return res.json(isUserAthenticated);
+        const token = jwt.sign({id:email}, secret.secret,{
+            expiresIn:86400
+        })
+        return res.json({
+            name:isUserAthenticated.name,
+            email:isUserAthenticated.email,
+            token:token
+        })
     }catch(error){
         return res.json("Usuário não encontrado")
     }
