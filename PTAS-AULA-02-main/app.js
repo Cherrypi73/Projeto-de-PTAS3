@@ -1,5 +1,4 @@
 const connectionDataBase = require('./config/connection');
-const userController = require('./controller/userController');
 const express = require('express');
 const app = express();
 const port = 3003;
@@ -8,8 +7,4 @@ app.listen(port, () => { console.log(`Run server...${port}`) });
 
 app.get('/', (req,res) => res.send("API-USER"));
 
-app.post('/user', userController.createUser);
-app.get('/user', userController.GetUser);
-app.get('/user/:id', userController.DeleteUser);
-app.put('/user/:id',userController.PutUser)
 

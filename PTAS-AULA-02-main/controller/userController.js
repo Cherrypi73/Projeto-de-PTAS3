@@ -40,4 +40,18 @@ const GetUser = async (req, res) => {
     const users = await User.findAll();
      return res.json(users)
 }
-module.exports = { createUser, GetUser, DeleteUser, PutUser };
+const authenticateUser = async (req,res) =>{
+    const {email, password} = req.body;
+    try{
+        const isUserAthenticated = await User.findOne({
+            where:{
+                email:email,
+                password:password
+            }
+        })
+        return res.json(isUserAthenticated);
+    }catch(error){
+        return res.json("Usuário não encontrado")
+    }
+}
+module.exports = { createUser, GetUser, DeleteUser, PutUser, authenticateUser};
