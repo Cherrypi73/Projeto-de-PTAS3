@@ -25,18 +25,18 @@ const DeleteUser = async(req,res) =>{
 const PutUser = async(req,res) =>{
     const { name, password, email } = req.body;
     const id = req.params;
-    const idtransform = parseInt(id)
- await User.update{
-   {
-    name: name,
-    password: password,
-    email: email
-   }
-   {
-    
-   }
+    const idtransform = parseInt(id);
+    await User.update({
+        name: name,
+        password: password,
+        email: email
+    },{
+        idtransform:idtransform
+    }
+    )
+
  }
-}
+
 const GetUser = async (req, res) => {
     const users = await User.findAll();
      return res.json(users)
