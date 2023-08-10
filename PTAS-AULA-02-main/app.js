@@ -10,4 +10,6 @@ app.get('/', (req,res) => res.send("API-USER"));
 
 app.post('/user', userController.createUser);
 app.get('/user', userController.GetUser);
+app.get('/user/:id', userController.DeleteUser);
+app.put('/user/:id',userController.PutUser)
 

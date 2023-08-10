@@ -14,8 +14,31 @@ const createUser = async (req, res) => {
         console.log(`Ops, deu erro: ${erro}`);
     })
 }
+const DeleteUser = async(req,res) =>{
+    const id = req.params;
+    await User.destroy({
+        where:{
+            id:id
+        }
+    })
+} 
+const PutUser = async(req,res) =>{
+    const { name, password, email } = req.body;
+    const id = req.params;
+    const idtransform = parseInt(id)
+ await User.update{
+   {
+    name: name,
+    password: password,
+    email: email
+   }
+   {
+    
+   }
+ }
+}
 const GetUser = async (req, res) => {
     const users = await User.findAll();
      return res.json(users)
 }
-module.exports = { createUser, GetUser };
+module.exports = { createUser, GetUser, DeleteUser, PutUser };
