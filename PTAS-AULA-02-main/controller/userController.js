@@ -1,6 +1,6 @@
 const User = require('../model/user');
 const secret = require('../config/auth.json');
-const jwt = require('jsonweb')
+const jwt = require('jsonwebtoken')
 const createUser = async (req, res) => {
     const { name, password, email } = req.body;
     await User.create({
